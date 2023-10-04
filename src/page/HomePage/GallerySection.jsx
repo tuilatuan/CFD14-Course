@@ -9,7 +9,6 @@ const GallerySection = ({ galleries = [], loading = false }) => {
 
       $carouselGallery.flickity({
         contain: true,
-        wrapAround: false,
         freeScroll: true,
         cellAlign: "left",
         lazyLoad: 6,
