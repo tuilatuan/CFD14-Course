@@ -4,11 +4,9 @@ import { STORAGE } from "../constants/storage";
 export const localToken = {
   get: () => JSON.parse(localStorage.getItem(STORAGE.token)),
   set: (token) => {
-    localStorage.setItem(STORAGE.token, JSON.stringify(token));
+    return localStorage.setItem(STORAGE.token, JSON.stringify(token));
   },
-  remove: () => {
-    localStorage.removeItem(STORAGE.token);
-  },
+  remove: () => localStorage.removeItem(STORAGE.token),
 };
 export const cookieToken = {
   get: () => {

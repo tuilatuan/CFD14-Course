@@ -1,51 +1,41 @@
 import React from "react";
+import Input from "../../components/Input";
+import Select from "../../components/Select";
 
-const FormOrder = () => {
+const FormOrder = ({ register, types, disabled }) => {
+  const typeOptions =
+    types?.length > 0
+      ? [{ value: "", label: "--" }, ...types.map((type) => ({ value: type, label: type }))]
+      : [{ value: "", label: "--" }];
+
   return (
     <div className="itemorder formorder">
       <h3 className="title --t3">Thông tin cá nhân</h3>
       <div className="boxorder">
-        <form action="#" className="form">
+        <div className="form">
           <div className="form-container">
-            <div className="form-group">
-              <label className="label">
-                Họ và tên <span>*</span>
-              </label>
-              <input defaultValue="Nghĩa Trần" type="text" className="form__input" />
-            </div>
-            <div className="form-group">
-              <label className="label">
-                Email <span>*</span>
-              </label>
-              <input defaultValue="nghiatran@2018@gmail.com" disabled type="email" className="form__input" />
-            </div>
+            <Input label="Họ và tên" required placeholder="Họ và tên" disabled={disabled} {...register("name")} />
+            <Input label="Email" required placeholder="Email" disabled {...register("email")} />
           </div>
           <div className="form-container">
-            <div className="form-group">
-              <label className="label">
-                Số điện thoại <span>*</span>
-              </label>
-              <input defaultValue={`0928338373`} type="text" className="form__input" />
-            </div>
-            <div className="form-group">
-              <label className="label">
-                Hình thức học <span>*</span>
-              </label>
-              <div className="select select-change">
-                <div className="head form__input">Học Offline</div>
-                <div className="sub" style={{ display: "none" }}>
-                  <a href="#" data-value="offline">
-                    Học Offline
-                  </a>
-                  <a href="#" data-value="online">
-                    Học Online
-                  </a>
-                </div>
-                <input type="text" name="type" hidden defaultValue="offline" />
-              </div>
-            </div>
+            <Input
+              label="Số điện thoại"
+              required
+              placeholder="Số điện thoại"
+              disabled={disabled}
+              {...register("phone")}
+            />
+            <Input
+              label="Hình thức học"
+              required
+              disabled={disabled}
+              renderInput={(inputProps) => {
+                return <Select options={typeOptions} {...inputProps} />;
+              }}
+              {...register("type")}
+            />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

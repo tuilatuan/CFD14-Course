@@ -16,11 +16,11 @@ const CourseCommingSection = ({ courses = [], loading = false }) => {
         wrapAround: true,
       });
       $(".coursecoming .control .control__next").on("click", function (e) {
-        e.preventDefault();
+        e.stopPropagation();
         courseComingSlider.flickity("next");
       });
       $(".coursecoming .control .control__prev").on("click", function (e) {
-        e.preventDefault();
+        e.stopPropagation();
         courseComingSlider.flickity("previous");
       });
     }

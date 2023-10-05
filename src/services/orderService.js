@@ -2,12 +2,12 @@ import axiosInstance from "../utils/axiosInstance";
 
 export const orderService = {
   getPaymentHistories() {
-    return axiosInstance.get("/order/me");
+    return axiosInstance.get("/orders/me");
   },
   getCourseHistories() {
-    return axiosInstance.get("/order/courses/me");
+    return axiosInstance.get("/orders/courses/me");
   },
-  getCourse(payload = "") {
-    return axiosInstance.get("/order", payload);
+  orderCourse(payload = "") {
+    return axiosInstance.post("/orders", payload);
   },
 };

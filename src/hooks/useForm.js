@@ -24,6 +24,7 @@ const useForm = (initialValue, rules) => {
     error,
     register,
     validate: _validate,
+    setForm,
   };
 };
 

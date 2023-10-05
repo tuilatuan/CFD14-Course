@@ -8,7 +8,8 @@ import { useAuthContext } from "../../context/AuthContext";
 
 const StudentProfilePage = () => {
   const { profile } = useAuthContext();
-  console.log("profile", profile);
+  const { firstName, introduce, email, phone, website } = profile || {};
+
   return (
     <main className="mainwrapper profilepage">
       <div className="container">
@@ -21,28 +22,25 @@ const StudentProfilePage = () => {
                     <img src="/img/cfd-share-thumbnail-facebook.png" alt="avatar" />
                   </div>
                 </div>
-                <h3 className="title --t3">{profile?.firstName || ""}</h3>
+                <h3 className="title --t3">{firstName || ""}</h3>
               </div>
             </div>
             <div className="sidebar__content">
               <h4>Giới thiệu</h4>
-              <p className="description">
-                Cheerful, cafeful,friendly. I like listening to music, traveling and coding, listening to music,
-                traveling and coding.
-              </p>
+              <p className="description">{introduce}</p>
               <ul>
                 <li>
                   <img src="/img/icon-mail-outline.svg" alt="icon" />
-                  <span>{profile?.email || ""}</span>
+                  <span>{email || ""}</span>
                 </li>
                 <li>
                   <img src="/img/icon-phone-outline.svg" alt="icon" />
-                  <span>098 9596 913</span>
+                  <span>{phone || ""}</span>
                 </li>
                 <li>
                   <img src="/img/icon-link.svg" alt="icon" />
                   <a href="#" target="_blank">
-                    {profile?.email}
+                    {website || ""}
                   </a>
                 </li>
               </ul>

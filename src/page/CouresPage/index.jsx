@@ -9,15 +9,7 @@ const Courses = () => {
   const { data: coursesData, loading: coursesLoading } = useQuery(courseService.getCourse);
   const courses = coursesData?.courses || [];
   console.log("coursesLoading", coursesLoading);
-  const loading = useDebounce(coursesLoading, 6000);
-
-  const [query, setQuery] = useState("");
-  // const onSearch = (value) => {
-  //   setQuery(value);
-  // };
-  // const text = useDebounce(query, 3000);
-  // <input onChange={(e) => onSearch(e.target.value)} />
-  // console.log("text", text);
+  const loading = useDebounce(coursesLoading, 1500);
 
   return (
     <main className="mainwrapper courses --ptop">
